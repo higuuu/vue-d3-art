@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h3>Covid-19 Total Comfirmed</h3>
+    <h3>Today Covid-19 Total Comfirmed</h3>
     <svg id="home-world-svg" />
   </div>
 </template>
