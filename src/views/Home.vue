@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HomeMessage msg="Welcome to Data Art" />
+    <HomeMessage msg="Welcome to Data Visualization" />
   </div>
 </template>
 
