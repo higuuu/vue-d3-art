@@ -1,4 +1,4 @@
-const webpack = require('webpack');  
+const webpack = require("webpack");
 
 module.exports = {
   configureWebpack: {
@@ -6,17 +6,16 @@ module.exports = {
       rules: [
         {
           test: /\.(json|geojson)$/,
-          loader: 'json-loader'
-      },
+          loader: "json-loader"
+        }
       ]
     }
   },
 
   devServer: {
     port: 8300,
-    disableHostCheck: true,
+    disableHostCheck: true
   },
 
-  lintOnSave: 'warning',
-
-}
+  lintOnSave: "warning"
+};

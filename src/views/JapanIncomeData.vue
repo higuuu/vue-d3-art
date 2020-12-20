@@ -1,4 +1,5 @@
 <template>
+  <h3>地域別日本の累積所得</h3>
   <svg id="svg-area"></svg>
 </template>
 
@@ -31,7 +32,6 @@ export default {
       .translate([width / 2, height / 2])
       .scale(scale);
     var geoPath = d3.geoPath().projection(aProjection);
-
 
     function createMap(japan) {
       console.log("japan:", japan);
