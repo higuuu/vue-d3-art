@@ -1,4 +1,5 @@
 <template>
+  <h3>地域別日本の累積所得</h3>
   <svg id="svg-area"></svg>
 </template>
 
