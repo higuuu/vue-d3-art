@@ -32,7 +32,6 @@ export default {
       .scale(scale);
     var geoPath = d3.geoPath().projection(aProjection);
 
-
     function createMap(japan) {
       console.log("japan:", japan);
       //マップ描画
