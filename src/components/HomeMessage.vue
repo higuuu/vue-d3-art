@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h3>Today Covid-19 Total Comfirmed</h3>
-    <h4> Date: {{ state.todayDate }}</h4>
+    <h4>Date: {{ state.todayDate }}</h4>
     <svg id="home-world-svg" />
   </div>
 </template>
@@ -10,11 +10,11 @@
 <script>
 import * as d3 from "d3";
 import axios from "axios";
-import {　defineComponent, reactive　} from "vue";
+import { defineComponent, reactive } from "vue";
 import worldDataJson from "@/assets/data/world/world.geojson";
 import notShowList from "@/lib/not-show-list.js";
 
-export default defineComponent ({
+export default defineComponent({
   name: "HomeMessage",
   props: {
     msg: String
@@ -23,7 +23,7 @@ export default defineComponent ({
     const state = reactive({
       todayDate: "???"
     });
-    return { state }
+    return { state };
   },
   async mounted() {
     const width = 1000;
@@ -48,7 +48,7 @@ export default defineComponent ({
       "https://api.covid19api.com/summary"
     );
     console.log(worldCovid19Data.data.Date);
-    this.state.todayDate = worldCovid19Data.data.Date
+    this.state.todayDate = worldCovid19Data.data.Date;
     ready(worldGeoData);
     function ready(data) {
       console.log(data);
@@ -67,6 +67,20 @@ export default defineComponent ({
         .style("fill", countryGeoData => {
           console.log(convid19ChangeColor(countryGeoData, worldCovid19Data));
           return convid19ChangeColor(countryGeoData, worldCovid19Data);
+        })
+        .on("mouseover", data => {
+          //TODO 吹き出しを出す
+          console.log(data.target.__data__.properties);
+        })
+        .on("click", data => {
+          alert(
+            data.target.__data__.properties.NAME +
+              "\n Total Comfirmed:" +
+              countryConvid19Detail(
+                data.target.__data__.properties.ISO_A2,
+                worldCovid19Data
+              )
+          );
         });
     }
 
@@ -88,6 +102,18 @@ export default defineComponent ({
         return "#fff";
       }
       return "#fff";
+    }
+
+    function countryConvid19Detail(countryISO_A2, covidDataSet) {
+      let countryCovidData = null;
+      covidDataSet.data.Countries.forEach(element => {
+        if (countryISO_A2 === element.CountryCode) {
+          countryCovidData = element;
+          return;
+        }
+      });
+      const totalCovid19 = countryCovidData.TotalConfirmed;
+      return totalCovid19;
     }
   }
 });
