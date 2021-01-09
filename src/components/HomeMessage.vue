@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h3>Today Covid-19 Total Comfirmed</h3>
+    <h4> Date: {{ state.todayDate }}</h4>
     <svg id="home-world-svg" />
   </div>
 </template>
@@ -9,18 +10,20 @@
 <script>
 import * as d3 from "d3";
 import axios from "axios";
+import {　defineComponent, reactive　} from "vue";
 import worldDataJson from "@/assets/data/world/world.geojson";
 import notShowList from "@/lib/not-show-list.js";
 
-export default {
+export default defineComponent ({
   name: "HomeMessage",
   props: {
     msg: String
   },
   setup() {
-    // let worldData = await worldDataJson
-    // console.log(worldData)
-    //return convid19ChangeColor
+    const state = reactive({
+      todayDate: "???"
+    });
+    return { state }
   },
   async mounted() {
     const width = 1000;
@@ -40,13 +43,13 @@ export default {
 
     var geoPath = d3.geoPath().projection(projection);
 
-    let worldGeoData = await worldDataJson;
+    const worldGeoData = await worldDataJson;
     const worldCovid19Data = await axios.get(
       "https://api.covid19api.com/summary"
     );
-    console.log(worldCovid19Data);
+    console.log(worldCovid19Data.data.Date);
+    this.state.todayDate = worldCovid19Data.data.Date
     ready(worldGeoData);
-
     function ready(data) {
       console.log(data);
       svg
@@ -87,7 +90,7 @@ export default {
       return "#fff";
     }
   }
-};
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
