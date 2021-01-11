@@ -57,9 +57,6 @@ export default {
 </script>
 
 <style scoped>
-/* .modal {
-  display: none;
-} */
 
 .modal.is_open {
   display: block;

@@ -6,7 +6,6 @@
       <h4>Date: {{ state.todayDate }}</h4>
       <svg id="home-world-svg" />
     </div>
-    <ModalMessage :modal-state="state.clickModal" />
   </div>
 </template>
 
@@ -16,13 +15,9 @@ import axios from "axios";
 import { defineComponent, reactive } from "vue";
 import worldDataJson from "@/assets/data/world/world.geojson";
 import notShowList from "@/lib/not-show-list.js";
-import ModalMessage from "@/components/ModalMessage.vue";
 
 export default defineComponent({
   name: "WorldCovid19Data",
-  components: {
-    ModalMessage
-  },
   props: {
     msg: String
   },
@@ -149,6 +144,7 @@ export default defineComponent({
       this.state.clickModal.newDeaths = countryCovidData.NewDeaths;
       this.state.clickModal.newRecovered = countryCovidData.NewRecovered;
       console.log("countryCovidData", countryCovidData);
+      this.$emit("modal-action",this.state.clickModal)
     }
   }
 });
