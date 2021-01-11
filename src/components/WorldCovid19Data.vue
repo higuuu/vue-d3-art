@@ -4,7 +4,9 @@
       <h1>{{ msg }}</h1>
       <h3>Today Covid-19 Total Comfirmed</h3>
       <h4>Date: {{ state.todayDate }}</h4>
-      <svg id="home-world-svg" />
+      <div class="svg-map">
+        <svg id="home-world-svg" />
+      </div>
     </div>
   </div>
 </template>
@@ -161,5 +163,9 @@ h3 {
 
 a {
   color: #42b983;
+}
+
+.svg-map {
+  overflow-x: auto;
 }
 </style>
