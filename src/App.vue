@@ -1,8 +1,11 @@
 <template>
-  <router-view />
-  <div id="nav">
+  <div>
+    <router-view />
+  <!-- 訳わからんくなるから下記の表示はしばらく閉鎖、しばらくcovid19の地図のみにしよう -->
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/japan-income/data">JapanIncomeData</router-link>
+  </div> -->
   </div>
 </template>
 
