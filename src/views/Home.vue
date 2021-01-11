@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <HomeMessage msg="Welcome to Data Visualization" />
+    <WorldCovid19Data msg="Welcome to Data Visualization" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HomeMessage from "@/components/HomeMessage.vue";
+import WorldCovid19Data from "@/components/WorldCovid19Data.vue";
 
 export default {
   name: "Home",
   components: {
-    HomeMessage
+    WorldCovid19Data
   }
 };
 </script>
